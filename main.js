@@ -41,6 +41,8 @@ function monster(monsterName){
 }
 
 function mutationDesc(explain){
+	if(option_mutation_namuwiki == 0)
+		return;
 	explain = explain[0];
 	var regExp = /A: (.*).:/i;
 	var mutations = regExp.exec(explain)[1].split(',')
@@ -118,12 +120,17 @@ function findMonsteResistant(dom){
 
 
 function monsterDesc(explains){
-	monster(explains[0]);
-	trans($('#menu_contents_inner li'), transDict_monsterDesc_regex);
-	findMonsteResistant(dom);
+	if(option_monster_namuwiki)
+		monster(explains[0]);
+	if(option_monster_trans){
+		trans($('#menu_contents_inner li'), transDict_monsterDesc_regex);
+		findMonsteResistant(dom);
+	}
 }
 
 function itemDesc(){
+	if(option_item_trans == 0)
+		return;
 	var dom = $('.menu_describe_item span');
 	try{
 		if(dom[dom.length - 1].className == 'fg3 bg0') //아이템 설명이 모두 출력되었을때
@@ -183,7 +190,7 @@ function getMessage_skillLevelMeter(message){
 		if(skillTrain == 0) skillTrain=' ';
 		if(skillTrain == 1) skillTrain='+';
 		if(skillTrain == 2) skillTrain='*';
-		if(skillTrain==' ' && skillLevel <= 1 ) //스킬의 실패율이 0,1일떄
+		if(skillTrain==' ' && skillLevel <= 1) //스킬의 실패율이 0,1일떄
 			fail1spells.push(skillName);
 		else
 		{
@@ -216,11 +223,51 @@ function getMessage(){
 
 
 
+optionHTML = 
+`
+<div id="script_option_screen" class="floating_dialog" style="display:none;">
+	<input type="checkbox" id="option_monster_trans" onclick="options('monster_trans')">몬스터 설명 번역</input><br>
+	<input type="checkbox" id="option_item_trans" onclick="options('item_trans')">아이템 설명 번역</input><br>
+	<input type="checkbox" id="option_monster_namuwiki" onclick="options('monster_namuwiki')">몬스터 추가설명(데이터:나무위키)</input><br>
+	<input type="checkbox" id="option_mutation_namuwiki" onclick="options('mutation_namuwiki')">돌연변이 설명(%키 눌렀을때 뜨는창, 데이터:나무위키)</input><br>
+	<button onclick="showOption(0);">설정저장</botton>
+</div>
+`
+
+function showOption(flag){
+	//flag == 1:키는거
+	//flag == 0:끄는거
+	if(flag == 1)
+		$('#script_option_screen')[0].style.display = '';
+	else
+		$('#script_option_screen')[0].style.display = 'none';
+}
+
+function options(input){
+	if(0){}
+	else if (input == 'monster_trans')		option_monster_trans = $('#option_monster_trans').attr("checked");
+	else if (input == 'item_trans')			option_item_trans = $('#option_item_trans').attr("checked");
+	else if (input == 'monster_namuwiki')	option_monster_namuwiki = $('#option_monster_namuwiki').attr("checked");
+	else if (input == 'mutation_namuwiki')	option_mutation_namuwiki = $('#option_mutation_namuwiki').attr("checked");
+}
+
+
 $('#menu').unbind();
 $('#menu').bind("DOMSubtreeModified", getMenu);
 
 $('#messages').unbind();
 $('#skillLevelDesc').remove();
 $('#messages').bind("DOMSubtreeModified",getMessage);
+
+$('#script_option').remove();
+$('#stats').prepend('<div id="script_option" style="float:right;color:white" onclick="showOption(1)">헬퍼옵션</div>');
+
+$('#script_option_screen').remove();
+$('body').append(optionHTML);
+
+option_monster_trans = 0;
+option_item_trans = 0;
+option_monster_namuwiki = 0;
+option_mutation_namuwiki = 0;
 
 console.log("적용완료");
