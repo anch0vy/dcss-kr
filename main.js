@@ -7,19 +7,21 @@ function getMenuWidth(){
 }
 
 function monster(monsterName){
+	monsterLink = '<a href="https://namu.wiki/w/%EB%8D%98%EC%A0%84%20%ED%81%AC%EB%A1%A4/%EB%AA%AC%EC%8A%A4%ED%84%B0">일반 몹 링크</a><br>';
+	namedLink = '<a href="https://namu.wiki/w/%EB%8D%98%EC%A0%84%20%ED%81%AC%EB%A1%A4/%EB%84%A4%EC%9E%84%EB%93%9C">네임드 몹 링크</a><br>';
 	try{
 		monsterName = /^[A|An] (.*)\.$/.exec(monsterName)[1];
 	}
-	catch(err){;}
+	catch(err){return;}
 	var text = $($('ol'),$('#menu_contents_inner'));
 	var style = 'width:600px;white-space:normal;';
 	var descs = mondic[monsterName];
 
-	if(descs){ // 일반몹
+	if(descs){ //일반몹
 		flag = 1;
 		for (var i = 0; i < descs.length; i++)
 			text.append(`<li class = "level2" style="${style}"><span class="">${descs[i]}</span></li>`);
-		text.append('<a href="https://namu.wiki/w/%EB%8D%98%EC%A0%84%20%ED%81%AC%EB%A1%A4/%EB%AA%AC%EC%8A%A4%ED%84%B0">일반 몹 링크</a><br>');
+		text.append();
 		return;
 	}
 
@@ -27,23 +29,22 @@ function monster(monsterName){
 		if(monsterName.indexOf(key) > -1){
 			for (var i = 0; i < namedmondic[key].length; i++)
 				text.append(`<li class = "level2" style="${style}"><span class="">${namedmondic[key][i]}</span></li>`);
-			text.append('<a href="https://namu.wiki/w/%EB%8D%98%EC%A0%84%20%ED%81%AC%EB%A1%A4/%EB%84%A4%EC%9E%84%EB%93%9C">네임드 몹 링크</a><br>');
+			text.append(namedLink);
 			return;
 		}
 	}
 	//못찾은경우
 	var str = '나무위키에 해당 항목이 없거나, 영문표기가 잘못되어있습니다.<br>만약 최신버전을 플레이중인데 이 메세지가 보인다면 나무위키에 해당항목을 추가하거나 고쳐주세요<br>';
-	str += '<a href="https://namu.wiki/w/%EB%8D%98%EC%A0%84%20%ED%81%AC%EB%A1%A4/%EB%84%A4%EC%9E%84%EB%93%9C">네임드 몹 링크</a><br>';
-	str += '<a href="https://namu.wiki/w/%EB%8D%98%EC%A0%84%20%ED%81%AC%EB%A1%A4/%EB%AA%AC%EC%8A%A4%ED%84%B0">일반 몹 링크</a><br>';
+	str += namedLink
+	str += monsterLink
 	text.append(str);
-	return;
 }
 
 function mutationDesc(explain){
 	explain = explain[0];
 	var regExp = /A: (.*).:/i;
 	var mutations = regExp.exec(explain)[1].split(',')
-	$("ol",$("#menu_contents_inner")).append('<div id="mutationdesc" style="font-size:80% ; overflow-y: scroll;height:300px"></div>');
+	$('#menu_contents_inner > ol').append('<div id="mutationdesc" style="font-size:80% ; overflow-y: scroll;height:300px"></div>');
 	var text = $("#mutationdesc");
 	for(var key in mutations){
 		var mutationRaw = mutations[key];
@@ -61,43 +62,32 @@ function mutationDesc(explain){
 	text.append('<a href="https://namu.wiki/w/던전 크롤/돌연변이">돌연변이 링크</a><br>');
 }
 
-function trans(dom, normal, regs){
+function trans(dom, regs){
 	dom.map(function(_,desc){
-		var tt = normal[desc.innerText];
-		if(tt)
-			desc.innerText = tt;
-		else{
-			var as = regs[0];
-			var bs = regs[1];
-			for (var i = as.length - 1; i >= 0; i--) {
-				var a = as[i];
-				var b = bs[i];
-				if(a.test(desc.innerText)){
-					desc.innerText = desc.innerText.replace(a,b);
-					return;
-				}
+		var as = regs[0];
+		var bs = regs[1];
+		for (var i = as.length - 1; i >= 0; i--) {
+			var a = as[i];
+			var b = bs[i];
+			if(a.test(desc.innerText)){
+				desc.innerText = desc.innerText.replace(a,b);
+				return;
 			}
 		}
 	})
 }
 
 function findMonsteResistant(dom){
-	type1 = ['immune' , 'resistant'];
-	type2 = transDict_word; //속성 -> 한글
 	dom.map(function(key,desc){
 		txt = desc.innerText;
 		if(txt.indexOf('immune') > -1 || txt.indexOf('resistant') > -1 || txt.indexOf(';') > -1){
-			if(txt.indexOf('.') > -1){
-				;
-			}
-			else{
+			if(txt.indexOf('.') == -1){
 				desc2 = dom[key+1];
 				txt = txt +' ' + desc2.innerText;
 				$(desc2).remove();
 			}
 			txt = txt.replace(/^(He|It) is/g,' ');
-			txt = txt.replace(/ to /g,' ');
-			txt = txt.replace(/ and /g,' ');
+			txt = txt.replace(/ (to|and) /g,' ');
 			txt = txt.replace(/,/g,' ');
 			txt = txt.replace(/\./g,' ');
 			txt = txt.replace(/  /g,' ');
@@ -107,8 +97,8 @@ function findMonsteResistant(dom){
 			txt = txt.replace(/; /g,';');
 			txt = txt.replace(/ $/g,';');
 			str = '';
-			for(var key in type2)
-				txt = txt.replace(key,type2[key]);
+			for(var key in transDict_word)
+				txt = txt.replace(key,transDict_word[key]);
 			txts = txt.split(';');
 			for(var key2 in txts){
 				value2 = txts[key2];
@@ -126,6 +116,24 @@ function findMonsteResistant(dom){
 	})
 }
 
+
+function monsterDesc(explains){
+	monster(explains[0]);
+	trans($('#menu_contents_inner li'), transDict_monsterDesc_regex);
+	findMonsteResistant(dom);
+}
+
+function itemDesc(){
+	var dom = $('.menu_describe_item span');
+	try{
+		if(dom[dom.length - 1].className == 'fg3 bg0') //아이템 설명이 모두 출력되었을때
+			trans(dom, transDict_itemDesc_regex);			
+	}
+	catch(err){
+		;
+	}
+}
+
 function _getMenu(){
 	var menu = $("#menu_contents_inner");
 	var ph_len = $(".placeholder",menu).length;
@@ -133,38 +141,19 @@ function _getMenu(){
 	if(ph_len == 0 && menu.length > 0 && li_len)
 	{
 		var explains = menu[0].innerText.split("\n");
-		if($('.menu_resists').length > 0)
-			mutationDesc(explains);
-		else if($('.menu_inventory').length > 0){} // 인벤토리 선택ㄱ창
-		else if(explains[0].indexOf('Innate Abilities, Weirdness') > -1){} // 능력
-		else if(explains[0].indexOf('Dungeon Overview and Level AnnotationsBranches') > -1){}
-		else if(explains[0].indexOf('Inventory') > -1){}
-		else if($('.menu_pickup').length > 0){} //ctrl + x
-		else if($('.menu_stash').length > 0){}
-		else if($('.menu_ability').length > 0){}
-		else if($('.menu_spell').length > 0){}//I 눌렀을때
-		else if($('.menu_').length > 0){ // monster desc
-			monster(explains[0]);
-			var dom = $('li',$("#menu_contents_inner"));
-			var normal = transDict_monsterDesc;
-			var reg = transDict_monsterDesc_regex;
-			trans(dom, normal, reg);
-			findMonsteResistant(dom);
-		}
+		if(0){}
+		else if($('.menu_pickup').length > 0)					{}							//ctrl + x , G
+		else if($('.menu_stash').length > 0)					{}							//ctrl + f
+		else if($('.menu_ability').length > 0)					{}							//a
+		else if($('.menu_spell').length > 0)					{}							//I , M
+		else if($('.menu_resists').length > 0)					{mutationDesc(explains);}	//%
+		else if($('.menu_inventory').length > 0)				{}							//i
+		else if($('.menu_describe_god').length > 0)				{}							//^
+		else if(explains[0].indexOf('Innate Abilities') > -1)	{}							//A
+		else if(explains[0].indexOf('Dungeon Overview') > -1)	{}							//ctrl o
+		else if($('.menu_').length > 0)							{monsterDesc(explains);}	//몬스터 설명??
 	}
-	else if($('.menu_describe_item').length > 0){//아이템설명
-		var dom = $('span',$(".menu_describe_item"));
-		var normal = transDict_itemDesc;
-		var reg = transDict_itemDesc_regex;
-		try{
-			if(dom[dom.length - 1].className == 'fg3 bg0')
-				trans(dom, normal, reg);			
-		}
-		catch(err){
-			;
-		}
-
-	}
+	else if($('.menu_describe_item').length > 0)				{itemDesc();}				//아이템설명
 }
 
 
