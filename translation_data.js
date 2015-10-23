@@ -485,6 +485,9 @@ transDict_itemDesc = {
 	a.push(/A truly terrible weapon, it drains the life of those it strikes/);
 	b.push("적의 생명력을 흡수하는, 실로 무시무시한 무기다");
 
+    a.push(/Attacks with this weapon are significantly faster/);
+    b.push('이 무기로 공격하면, 공격이 살짝 빨라진다');
+
 	a.push(/Any (.*) fired from it inflicts extra damage/);
 	b.push("발사된 $1는 추가 타격을 입히게 된다");
 
@@ -514,5 +517,10 @@ transDict_itemDesc = {
 
 	a.push(/It disrupts the flow of magical energy around spellcasters and certain magical creatures \(including the wielder\)/);
 	b.push('이 무기는 마법 사용자나 혹은 마법에 의한 창조물들의 마력의 흐름을 방해한다(무기 사용자도 포함)');
+
+// case SPWPN_NORMAL:
+//     ASSERT(enchanted);
+//     description += "It has no special brand (it is not flaming, freezing, etc), but is still enchanted in some way - positive or negative.";
+//     break;
 
 }

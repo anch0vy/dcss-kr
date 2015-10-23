@@ -142,7 +142,7 @@ function itemDesc(){
 		return;
 	var dom = $('.menu_describe_item span');
 	try{
-		if(dom[dom.length - 1].className == 'fg3 bg0') //아이템 설명이 모두 출력되었을때
+		if(dom[dom.length - 1].innerText.indexOf('You found') > -1) //아이템이 어느정도 출력됬을떄
 			trans(dom, transDict_itemDesc_regex);
 	}
 	catch(err){
