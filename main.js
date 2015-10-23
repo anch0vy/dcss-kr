@@ -71,12 +71,21 @@ function trans(dom, regs){
 		for (var i = as.length - 1; i >= 0; i--) {
 			var a = as[i];
 			var b = bs[i];
-			if(a.test(desc.innerText)){
-				desc.innerText = desc.innerText.replace(a,b);
+			var txt = desc.innerText;
+			if(a.test(txt)){
+				txt = txt.replace(a,b);
+				txt = transShortWord(txt)
+				desc.innerText = txt;
 				return;
 			}
 		}
 	})
+}
+
+function transShortWord(txt){
+	for(var key in transDict_word)
+		txt = txt.replace(key,transDict_word[key]);
+	return txt;
 }
 
 function findMonsteResistant(dom){
@@ -99,8 +108,7 @@ function findMonsteResistant(dom){
 			txt = txt.replace(/; /g,';');
 			txt = txt.replace(/ $/g,';');
 			str = '';
-			for(var key in transDict_word)
-				txt = txt.replace(key,transDict_word[key]);
+			txt = transShortWord(txt);
 			txts = txt.split(';');
 			for(var key2 in txts){
 				value2 = txts[key2];
@@ -135,7 +143,7 @@ function itemDesc(){
 	var dom = $('.menu_describe_item span');
 	try{
 		if(dom[dom.length - 1].className == 'fg3 bg0') //아이템 설명이 모두 출력되었을때
-			trans(dom, transDict_itemDesc_regex);			
+			trans(dom, transDict_itemDesc_regex);
 	}
 	catch(err){
 		;

@@ -163,7 +163,7 @@ transDict_monsterDesc = { //몬스터 설명 reg
 	b.push("그것은 언데드와 악마에게 추가적인 데미지를 입힌다");
 
 	a.push(/^(.*) may attack to drain magic/);
-	b.push("그것의 공격은 may attack to drain magic");
+	b.push("그것의 공격은 당신의 마법을 흡수한다");
 
 	a.push(/^(.*) may attack to cause pain to the living/);
 	b.push("그것의 공격은 살아있는 것에 고통(pain)을 유발한다");
@@ -218,6 +218,8 @@ transDict_monsterDesc = { //몬스터 설명 reg
 	"rotting" : 'rotting',
 	"negative energy" : '음에너지',
 	'blinding' : '실명',
+	'extremely' : '극도로',
+	'particularly' : '특히',
 	}
 }
 
@@ -387,4 +389,130 @@ transDict_itemDesc = {
 
 	a.push(/^It reduces the accuracy of all your attacks/);
 	b.push('이것은 전반적인 공격의 정확도를 낮춘다');
+
+	a.push(/It makes you extremely vulnerable to (\w*)/);
+	b.push('이것은 당신을 $1에 극히 취약하게 만든다');
+
+	a.push(/It makes you very vulnerable to (\w*)/);
+	b.push('이것은 당신을 $1에 매우 취약하게 만든다');
+
+	a.push(/It makes you vulnerable to (\w*)/);
+	b.push('이것은 당신을 $1에 취약하게 만든다');
+
+	a.push(/It protects you from (\w*)/);
+	b.push('이것은 당신을 $1(으)로부터 보호한다');
+
+	a.push(/It greatly protects you from (\w*)/);
+	b.push('이것은 당신을 $1(으)로부터 강하게 보호한다');
+
+	a.push(/It renders you almost immune to(\w*)/);
+	b.push('이것은 당신을 $1에 거의 면역이 되게 한다');
+
+	a.push(/It can be evoked to extend its reach/);
+	b.push('이 무기는 발동을 통해 사거리를 늘려 공격하는 것이 가능하다');
+
+	a.push(/It can hit multiple enemies in an arc around the wielder/);
+	b.push('이것은 착용자 주변의 다수의 적들을 한 번에 공격할 수 있다');
+
+	a.push(/It is (extremely|particularly) good for stabbing unaware enemies/);
+	b.push("이것은 당신을 눈치채지 못한 적을 암살하는데 $1 적합하다");
+
+	a.push(/It inflicts extra damage upon your enemies/);
+	b.push('이것은 적에게 추가 타격을 입한다.');
+//안된부분
+// switch (spec_ench)
+// {
+// case SPWPN_FLAMING:
+//     if (is_range_weapon(item))
+//         description += "It causes projectiles fired from it to burn those they strike,";
+//     else
+//         description += "It has been specially enchanted to burn those struck by it,";
+//     description += " causing extra injury to most foes and up to half again as much damage against particularly susceptible opponents.";
+//     if (!is_range_weapon(item) &&
+//         (damtype == DVORP_SLICING || damtype == DVORP_CHOPPING))
+//     {
+//         description += " Big, fiery blades are also staple armaments of hydra-hunters.";
+//     }
+//     break;
+// case SPWPN_FREEZING:
+//     if (is_range_weapon(item))
+//     {
+//         description += "It causes projectiles fired from it to freeze those they strike,";
+//     }
+//     else
+//     {
+//         description += "It has been specially enchanted to freeze those struck by it,";
+//     }
+//     description += " causing extra injury to most foes and up to half again as much damage against particularly susceptible opponents.";
+//     if (is_range_weapon(item))
+//         description += " They";
+//     else
+//         description += " It";
+//     description += " can also slow down cold-blooded creatures.";
+//     break;
+// case SPWPN_HOLY_WRATH:
+//     description += "It has been blessed by the Shining One";
+//     if (is_range_weapon(item))
+//     {
+//         description += ", and any ";
+//         description += ammo_name(item);
+//         description += " fired from it will";
+//     }
+//     else
+//         description += " to";
+//     description += " cause great damage to the undead and demons.";
+//     break;
+
+
+	a.push(/It charges the ammunition it shoots with electricity; occasionally upon a hit, such missiles may discharge and cause terrible harm/);
+	b.push("이 무기는 발사체에 전기를 충전하며, 적에게 명중했을 때 이따금씩 전기를 방출하여 치명적인 피해를 입힐 수 있다");
+
+	a.push(/Occasionally, upon striking a foe, it will discharge some electrical energy and cause terrible harm/);
+	b.push("적에게 명중했을 때 이따금씩 전기 에너지를 방출하여 치명적인 피해를 입힐 수 있다");
+
+	a.push(/It poisons the ammo it fires/);
+	b.push("발사되는 화살이나 다트 등에 독을 부여한다");
+
+	a.push(/It poisons the flesh of those it strikes/);
+	b.push("이 무기는 공격당한 상대를 독에 걸리게 한다");
+
+	a.push(/It protects the one who wields it against injury \(\+5 to AC\)/);
+	b.push("무기의 사용자를 피해로부터 보호한다 (+5 to AC)");
+
+	a.push(/It affects your evasion \(\+5 to EV\)/);
+	b.push("무기 사용자의 회피력을 상승시킨다 (+5 to EV)");
+
+	a.push(/A truly terrible weapon, it drains the life of those it strikes/);
+	b.push("적의 생명력을 흡수하는, 실로 무시무시한 무기다");
+
+	a.push(/Any (.*) fired from it inflicts extra damage/);
+	b.push("발사된 $1는 추가 타격을 입히게 된다");
+
+	a.push(/It inflicts extra damage upon your enemies/);
+	b.push("적에게 추가 타격을 입한다");
+
+	a.push(/Each time it fires, it turns the launched projectile into a different, random type of bolt/);
+	b.push("매 발사시마다, 발사되는 화살이나 다트 등을 무작위 속성의 효과로 감싼다");
+
+	a.push(/Each time it hits an enemy it has a different, random effect/);
+	b.push("적을 공격할 때마다, 적에게 무작위적인 효과를 낸다");
+
+	a.push(/It inflicts no extra harm, but heals its wielder somewhat when it strikes a living foe/);
+	b.push("추가 타격을 입히지는 않지만, 살아있는 상대에게 피해를 입힐 경우, 사용자의 체력을 약간 회복시킨다")
+
+	a.push(/In the hands of one skilled in necromantic magic, it inflicts extra damage on living creatures/);
+	b.push("강령술 마법에 숙련된 자가 사용하면, 살아있는 적에게 추가 데미지를 입힐 수 있다");
+
+	a.push(/It warps and distorts space around it. Unwielding it can cause banishment or high damage/);
+	b.push("주위 공간을 비틀고 왜곡시킨다. 이 무기를 손에서 놓으면 추방당하거나 높은 타격을 입을 수 있다");
+
+	a.push(/Ammo fired by it will pass through the targets it hits, potentially hitting all targets in its path until it reaches maximum range/);
+	b.push('이 무기에서 발사되는 발사체들은 적들을 관통하게 된다. 최선의 상황에서는 발사체의 이동 경로에 있는 모든 적들을 한 번에 공격할 수도 있다');
+
+	a.push(/If a monster killed with it leaves a corpse in good enough shape, the corpse will be animated as a zombie friendly to the killer/);
+	b.push('이 무기에 의해 죽은 몬스터의 시체가 온전하다면, 시체는 좀비로 부활하여 사용자를 따를 것이다');
+
+	a.push(/It disrupts the flow of magical energy around spellcasters and certain magical creatures \(including the wielder\)/);
+	b.push('이 무기는 마법 사용자나 혹은 마법에 의한 창조물들의 마력의 흐름을 방해한다(무기 사용자도 포함)');
+
 }
