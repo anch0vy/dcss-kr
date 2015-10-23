@@ -399,7 +399,7 @@ transDict_itemDesc = {
 	a.push(/It makes you vulnerable to (\w*)/);
 	b.push('이것은 당신을 $1에 취약하게 만든다');
 
-	a.push(/It protects you from (\w*)/);
+	a.push(/It protects you from ([a-zA-Z ]*)/);
 	b.push('이것은 당신을 $1(으)로부터 보호한다');
 
 	a.push(/It greatly protects you from (\w*)/);
@@ -522,5 +522,20 @@ transDict_itemDesc = {
 //     ASSERT(enchanted);
 //     description += "It has no special brand (it is not flaming, freezing, etc), but is still enchanted in some way - positive or negative.";
 //     break;
+
+	a.push(/This weapon may have some hidden properties/);
+	b.push('이 무기는 숨겨진 능력이 있을 것 같다');
+
+	a.push(/It is too large for you to wield/);
+	b.push('이 무기는 장비하기에 너무 커 보인다');
+
+	a.push(/It cannot be enchanted further/);
+	b.push('이것은 더 이상 강화할 수 없다');
+
+	a.push(/It can be maximally enchanted to \+([0-9]*)/);
+	b.push('이것은 최대 +$1까지 강화가 가능하다');
+
+	a.push(/Base accuracy: (.*)  Base damage: (.*)  Base attack delay: (.*)/);
+	b.push('명중: $1  기본 데미지: $2  기본 공속: $3');
 
 }

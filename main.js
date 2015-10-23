@@ -142,7 +142,9 @@ function itemDesc(){
 		return;
 	var dom = $('.menu_describe_item span');
 	try{
-		if(dom[dom.length - 1].innerText.indexOf('You found') > -1) //아이템이 어느정도 출력됬을떄
+		if(dom[dom.length - 1].innerText.indexOf('You found') > -1
+		|| dom[dom.length - 1].innerText.indexOf('You took') > -1
+		|| dom[dom.length - 1].innerText.indexOf('...') > -1) //아이템이 어느정도 출력됬을떄
 			trans(dom, transDict_itemDesc_regex);
 	}
 	catch(err){
