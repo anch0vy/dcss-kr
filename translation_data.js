@@ -216,7 +216,9 @@ transDict_monsterDesc = { //몬스터 설명 reg
 	"cold" : '냉기',
 	"acid" : '산성',
 	"rotting" : 'rotting',
-	"negative energy" : '음에너지',}
+	"negative energy" : '음에너지',
+	'blinding' : '실명',
+	}
 }
 
 

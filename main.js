@@ -120,10 +120,11 @@ function findMonsteResistant(dom){
 
 
 function monsterDesc(explains){
+	var dom = $('#menu_contents_inner li');
 	if(option_monster_namuwiki)
 		monster(explains[0]);
 	if(option_monster_trans){
-		trans($('#menu_contents_inner li'), transDict_monsterDesc_regex);
+		trans(dom, transDict_monsterDesc_regex);
 		findMonsteResistant(dom);
 	}
 }
@@ -230,7 +231,7 @@ optionHTML =
 	<input type="checkbox" id="option_item_trans" onclick="options('item_trans')">아이템 설명 번역</input><br>
 	<input type="checkbox" id="option_monster_namuwiki" onclick="options('monster_namuwiki')">몬스터 추가설명(데이터:나무위키)</input><br>
 	<input type="checkbox" id="option_mutation_namuwiki" onclick="options('mutation_namuwiki')">돌연변이 설명(%키 눌렀을때 뜨는창, 데이터:나무위키)</input><br>
-	<button onclick="showOption(0);">설정저장</botton>
+	<button onclick="saveOption();">설정저장</botton>
 </div>
 `
 
@@ -245,12 +246,34 @@ function showOption(flag){
 
 function options(input){
 	if(0){}
-	else if (input == 'monster_trans')		option_monster_trans = $('#option_monster_trans').attr("checked");
-	else if (input == 'item_trans')			option_item_trans = $('#option_item_trans').attr("checked");
-	else if (input == 'monster_namuwiki')	option_monster_namuwiki = $('#option_monster_namuwiki').attr("checked");
-	else if (input == 'mutation_namuwiki')	option_mutation_namuwiki = $('#option_mutation_namuwiki').attr("checked");
+	else if (input == 'monster_trans')		option_monster_trans 		= $('#option_monster_trans').is(":checked");
+	else if (input == 'item_trans')			option_item_trans 			= $('#option_item_trans').is(":checked");
+	else if (input == 'monster_namuwiki')	option_monster_namuwiki 	= $('#option_monster_namuwiki').is(":checked");
+	else if (input == 'mutation_namuwiki')	option_mutation_namuwiki 	= $('#option_mutation_namuwiki').is(":checked");
 }
 
+function loadOption(){
+	option_monster_trans		= localStorage.getItem('option_monster_trans') === 'true';
+	option_item_trans			= localStorage.getItem('option_item_trans') === 'true';
+	option_monster_namuwiki		= localStorage.getItem('option_monster_namuwiki') === 'true';
+	option_mutation_namuwiki	= localStorage.getItem('option_mutation_namuwiki') === 'true';
+	if(option_monster_trans)
+		$('#option_monster_trans').prop("checked",true);
+	if(option_item_trans)
+		$('#option_item_trans').prop("checked",true);
+	if(option_monster_namuwiki)
+		$('#option_monster_namuwiki').prop("checked",true);
+	if(option_mutation_namuwiki)
+		$('#option_mutation_namuwiki').prop("checked",true);
+}
+
+function saveOption(){
+	localStorage.setItem('option_monster_trans'		,Boolean(option_monster_trans)		);
+	localStorage.setItem('option_item_trans'		,Boolean(option_item_trans)			);
+	localStorage.setItem('option_monster_namuwiki'	,Boolean(option_monster_namuwiki)	);
+	localStorage.setItem('option_mutation_namuwiki'	,Boolean(option_mutation_namuwiki)	);
+	showOption(0);
+}
 
 $('#menu').unbind();
 $('#menu').bind("DOMSubtreeModified", getMenu);
@@ -265,9 +288,9 @@ $('#stats').prepend('<div id="script_option" style="float:right;color:white" onc
 $('#script_option_screen').remove();
 $('body').append(optionHTML);
 
-option_monster_trans = 0;
-option_item_trans = 0;
-option_monster_namuwiki = 0;
-option_mutation_namuwiki = 0;
-
+option_monster_trans = Boolean(0);
+option_item_trans = Boolean(0);
+option_monster_namuwiki = Boolean(0);
+option_mutation_namuwiki = Boolean(0);
+loadOption();
 console.log("적용완료");
