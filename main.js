@@ -75,7 +75,12 @@ function trans(dom, regs){
 			if(a.test(txt)){
 				txt = txt.replace(a,b);
 				txt = transShortWord(txt)
-				desc.innerText = txt;
+				try{
+					$('span' , desc)[0].innerText = txt;
+				}
+				catch(err){
+					desc.innerText = txt;
+				}
 				return;
 			}
 		}

@@ -214,12 +214,17 @@ transDict_monsterDesc = { //몬스터 설명 reg
 	"fire" : '화염',
 	"steam" : '증기',
 	"cold" : '냉기',
-	"acid" : '산성',
+	"acid" : '산(성)',
 	"rotting" : 'rotting',
 	"negative energy" : '음에너지',
 	'blinding' : '실명',
 	'extremely' : '극도로',
 	'particularly' : '특히',
+	'mutation' : '돌연변이',
+	'corrosion' : '부식',
+	'missiles' : '투사체',//순서지키기
+	'missile' : '투사체',
+	' and ' : ' , ' //이건 무조건 마지막
 	}
 }
 
@@ -390,22 +395,22 @@ transDict_itemDesc = {
 	a.push(/^It reduces the accuracy of all your attacks/);
 	b.push('이것은 전반적인 공격의 정확도를 낮춘다');
 
-	a.push(/It makes you extremely vulnerable to (\w*)/);
+	a.push(/It makes you extremely vulnerable to ([a-zA-Z ]*)/);
 	b.push('이것은 당신을 $1에 극히 취약하게 만든다');
 
-	a.push(/It makes you very vulnerable to (\w*)/);
+	a.push(/It makes you very vulnerable to ([a-zA-Z ]*)/);
 	b.push('이것은 당신을 $1에 매우 취약하게 만든다');
 
-	a.push(/It makes you vulnerable to (\w*)/);
+	a.push(/It makes you vulnerable to ([a-zA-Z ]*)/);
 	b.push('이것은 당신을 $1에 취약하게 만든다');
 
 	a.push(/It protects you from ([a-zA-Z ]*)/);
 	b.push('이것은 당신을 $1(으)로부터 보호한다');
 
-	a.push(/It greatly protects you from (\w*)/);
+	a.push(/It greatly protects you from ([a-zA-Z ]*)/);
 	b.push('이것은 당신을 $1(으)로부터 강하게 보호한다');
 
-	a.push(/It renders you almost immune to(\w*)/);
+	a.push(/It renders you almost immune to([a-zA-Z ]*)/);
 	b.push('이것은 당신을 $1에 거의 면역이 되게 한다');
 
 	a.push(/It can be evoked to extend its reach/);
@@ -537,5 +542,86 @@ transDict_itemDesc = {
 
 	a.push(/Base accuracy: (.*)  Base damage: (.*)  Base attack delay: (.*)/);
 	b.push('명중: $1  기본 데미지: $2  기본 공속: $3');
+
+	a.push(/It allows its wearer to slither at a great speed/);
+	b.push("이것은 착용자가 빠른 속도로 기어갈 수 있게 해준다");
+
+	a.push(/It allows its wearer to run at a great speed/);
+	b.push("이것은 착용자를 빠른 속도로 달릴 수 있게 해준다");
+
+	a.push(/It protects its wearer from heat/);
+	b.push("이것은 착용자를 불과 열기로부터 보호한다");
+
+	a.push(/It protects its wearer from cold/);
+	b.push("이것은 착용자를 냉기로부터 보호한다");
+
+	a.push(/It protects its wearer from poison/);
+	b.push("이것은 착용자를 독으로부터 보호한다");
+
+	a.push(/It allows its wearer to see invisible things/);
+	b.push("이것은 착용자가 투명한 것들을 볼 수 있게 해준다");
+
+	a.push(/When activated it hides its wearer from the sight of others, but also increases their metabolic rate by a large amount/);
+	b.push("이것은 발동시 이것은 착용자를 주위 시선으로부터 숨기지만, 동시에 신진대사의 속도도 큰 폭으로 증가하게 된다.");
+
+	a.push(/It increases the physical power of its wearer \(\+3 to strength\)/);
+	b.push("이것은 착용자의 물리적 힘을 증가시킨다 (힘 +3)");
+
+	a.push(/It increases the dexterity of its wearer \(\+3 to dexterity\)/);
+	b.push("이것은 착용자의 민첩성을 증가시킨다 (민첩성 +3)");
+
+	a.push(/It makes you more clever \(\+3 to intelligence\)/);
+	b.push("이것은 착용자를 더욱 똑똑하게 만들어준다 (지능 +3)");
+
+	a.push(/It is very cumbersome, thus slowing your movement/);
+	b.push("이것은 움직임에 매우 방해가 되어, 이동속도를 감소시킨다");
+
+	a.push(/It can be activated to allow its wearer to fly indefinitely/);
+	b.push("이것은 발동시켜 착용자를 공중으로 떠오르게 할 수 있다");
+
+	a.push(/It increases its wearer's resistance to enchantments/);
+	b.push("이것은 착용자의 마법에 대한 저항력을 강화시킨다");
+
+	a.push(/It protects its wearer from harm \(\+3 to AC\)/);
+	b.push("이것은 착용자를 물리적 피해로부터 보호한다 (AC +3)");
+
+	a.push(/It enhances the stealth of its wearer/);
+	b.push("이것은 착용자가 더 은밀하게 움직일 수 있도록 해준다");
+
+	a.push(/It protects its wearer from the effects of both cold and heat/);
+	b.push("이것은 착용자를 냉기와 불로부터 보호한다");
+
+	a.push(/It protects its wearer from the effects of negative energy/);
+	b.push("이것은 착용자를 음에너지로부터 보호한다");
+
+	a.push(/It increases the power of its wearer's magical spells/);
+	b.push("이것은 착용자가 시전하는 주문의 위력을 강화시킨다");
+
+	a.push(/It does nothing special/);
+	b.push("이것은 It does nothing special");
+
+	a.push(/It reflects blocked things back in the direction they came from/);
+	b.push("이것은 (투사체같은) 막은 것들을 그것들이 온 방향으로 되돌려보낸다");
+
+	a.push(/It shields its wearer from harm at the cost of magical power/);
+	b.push("이것은 마나를 소모하여 착용자를 피해로부터 보호한다");
+
+	a.push(/It improves your effectiveness with ranged weaponry \(Slay\+4\)/);
+	b.push("이것은 It improves your effectiveness with ranged weaponry (Slay+4)");
+
+	a.push(/This armour may have some hidden properties/);
+	b.push("이것은 이 방어구는 왠지 숨겨진 능력이 있을 것 같다");
+
+	a.push(/Enchanting it will turn it into a suit of magical armour/);
+	b.push("이것을 강화하면 이것은 마법 방어구로 변할 것이다");
+
+	a.push(/It cannot be enchanted further/);
+	b.push("이것은 더 이상 강화할 수 없다");
+
+	a.push(/Base armour rating: (.*)  Encumbrance rating: (.*)/);
+	b.push("기본 AC: $1                방해 수치:$2");
+
+	a.push(/Wearing mundane armour of this type will give the following: (.*)/);
+	b.push('이 유형의 평범한 갑옷을 착용할시 $1 를 준다.');
 
 }
