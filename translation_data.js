@@ -5,207 +5,215 @@ transDict_monsterDesc = { //몬스터 설명 reg
 	var a = [];
 	var b = [];
 	transDict_monsterDesc_regex = [a,b];
+	//It -> 그것
+	//He -> 그
+	//She -> 그녀
+	a.push(/^(.+) looks harmless/);
+	b.push('$1은(는) 별다른 위협이 되어 보이지 않는다');
 
-	a.push(/.+ looks harmless/);
-	b.push('그것은 별다른 위협이 되어 보이지 않는다');
+	a.push(/^(.+) looks easy/);
+	b.push('$1은(는) 어렵지 않은 상대이다');
 
-	a.push(/.+ looks easy/);
-	b.push('그것은 어렵지 않은 상대이다');
+	a.push(/^(.+) looks dangerous/);
+	b.push('$1은(는) 만만치 않은 상대이다');
 
-	a.push(/.+ looks dangerous/);
-	b.push('그것은 만만치 않은 상대이다');
+	a.push(/^(.+) looks extremely dangerous/);
+	b.push('$1은(는) 극히 위험한 상대이다');
 
-	a.push(/.+ looks extremely dangerous/);
-	b.push('그것은 극히 위험한 상대이다');
+	a.push(/^(.+) is tiny/);
+	b.push('$1은(는) 매우매우 작다');
 
-	a.push(/.+ is tiny/);
-	b.push('그것은 매우매우 작다');
+	a.push(/^(.+) is very small/);
+	b.push('$1은(는) 매우 작다');
 
-	a.push(/.+ is very small/);
-	b.push('그것은 매우 작다');
+	a.push(/^(.+) is small/);
+	b.push('$1은(는) 작다');
 
-	a.push(/.+ is small/);
-	b.push('그것은 작다');
+	a.push(/^(.+) is large/);
+	b.push('$1은(는) 크다');
 
-	a.push(/.+ is large/);
-	b.push('그것은 크다');
+	a.push(/^(.+) is very large/);
+	b.push('$1은(는) 매우 크다');
 
-	a.push(/.+ is very large/);
-	b.push('그것은 매우 크다');
+	a.push(/^(.+) is giant/);
+	b.push('$1은(는) 매우 거대하다');
 
-	a.push(/.+ is giant/);
-	b.push('그것은 매우 거대하다');
+	a.push(/^(.+) is extremely slowly/);
+	b.push('$1은(는) 극도로 느리다');
 
-	a.push(/.+ is extremely slowly/);
-	b.push('그것은 극도로 느리다');
+	a.push(/^(.+) is very slowly/);
+	b.push('$1은(는) 매우 느리다');
 
-	a.push(/.+ is very slowly/);
-	b.push('그것은 매우 느리다');
+	a.push(/^(.+) is slowly/);
+	b.push('$1은(는) 느리다');
 
-	a.push(/.+ is slowly/);
-	b.push('그것은 느리다');
+	a.push(/^(.+) is quickly/);
+	b.push('$1은(는) 빠르다');
 
-	a.push(/.+ is quickly/);
-	b.push('그것은 빠르다');
+	a.push(/^(.+) is very quickly/);
+	b.push('$1은(는) 매우 빠르다');
 
-	a.push(/.+ is very quickly/);
-	b.push('그것은 매우 빠르다');
+	a.push(/^(.+) is extremely quickly/);
+	b.push('$1은(는) 극도로 빠르다');
 
-	a.push(/.+ is extremely quickly/);
-	b.push('그것은 극도로 빠르다');
+	a.push(/^(.+) can fly/);
+	b.push('$1은(는) 날 수 있다');
 
-	a.push(/.+ can fly/);
-	b.push('그것은 날 수 있다');
+	a.push(/^(.+) is intelligent/);
+	b.push('$1은(는) 지성이 있다');
 
-	a.push(/.+ is intelligent/);
-	b.push('그것은 지성이 있다');
+	a.push(/^(.+) cannot regenerate/);
+	b.push('$1은(는) 재생할 수 없다');
 
-	a.push(/.+ cannot regenerate/);
-	b.push('그것은 재생할 수 없다');
+	a.push(/^(.+) is vulnerable to silver and hated by Zin/);
+	b.push('$1은(는) 은에 약하며, 진에게 미움을 받는다');
 
-	a.push(/.+ is vulnerable to silver and hated by Zin/);
-	b.push('그것은 은에 약하며, 진에게 미움을 받는다');
+	a.push(/^(.+) is mindless/);
+	b.push('$1은(는) 감성이 없다');
 
-	a.push(/.+ is mindless/);
-	b.push('그것은 감성이 없다');
+	a.push(/^(.+) is slow/);
+	b.push('$1은(는) 느리다');
 
-	a.push(/.+ is slow/);
-	b.push('그것은 느리다');
+	a.push(/^(.+) can see invisible/);
+	b.push('$1은(는) 보이지 않는 물체를 감지할 수 있다');
 
-	a.push(/.+ can see invisible/);
-	b.push('그것은 보이지 않는 물체를 감지할 수 있다');
-
-	a.push(/.+ regenerates quickly/);
-	b.push('그것은 빠르게 재생한다');
+	a.push(/^(.+) regenerates quickly/);
+	b.push('$1은(는) 빠르게 재생한다');
 
 	a.push(/^It is susceptible to (.*)\./);
-	b.push('그것은 몇몇 공격에 대해 민감하다. ($1)');
+	b.push('$1은(는) 몇몇 공격에 대해 민감하다. ($1)');
 
-	a.push(/^(.*) may attack to deal extra acid damage/);
-	b.push("그것은 추가적인 산성 데미지를 입힌다");
+	a.push(/^(.+) may attack to deal extra acid damage/);
+	b.push("$1은(는) 추가적인 산성 데미지를 입힌다");
 
-	a.push(/^(.*) may attack to blink self/);
-	b.push("그것은 may attack to blink self");
+	a.push(/^(.+) may attack to blink self/);
+	b.push("$1은(는) may attack to blink self");
 
-	a.push(/^(.*) may attack to deal extra cold damage/);
-	b.push("그것은 추가적인 냉기 데미지를 준다");
+	a.push(/^(.+) may attack to deal extra cold damage/);
+	b.push("$1은(는) 추가적인 냉기 데미지를 준다");
 
-	a.push(/^(.*) may attack to cause confusion/);
-	b.push("그것의 공격은 혼란을 유발시킨다");
+	a.push(/^(.+) may attack to cause confusion/);
+	b.push("$1의 공격은 혼란을 유발시킨다");
 
-	a.push(/^(.*) may attack to drain strength/);
-	b.push("그것은 공격은 힘을 흡수한다");
+	a.push(/^(.+) may attack to drain strength/);
+	b.push("$1은(는) 공격은 힘을 흡수한다");
 
-	a.push(/^(.*) may attack to drain intelligence/);
-	b.push("그것의 공격은 지능을 흡수한다");
+	a.push(/^(.+) may attack to drain intelligence/);
+	b.push("$1의 공격은 지능을 흡수한다");
 
-	a.push(/^(.*) may attack to drain dexterity/);
-	b.push("그것은 의 공격은 민첩성을 흡수한다");
+	a.push(/^(.+) may attack to drain dexterity/);
+	b.push("$1은(는) 의 공격은 민첩성을 흡수한다");
 
-	a.push(/^(.*) may attack to drain strength, intelligence or dexterity/);
-	b.push("그것의 공격은 힘, 지능, 민첩성을 흡수한다");
+	a.push(/^(.+) may attack to drain strength, intelligence or dexterity/);
+	b.push("$1의 공격은 힘, 지능, 민첩성을 흡수한다");
 
-	a.push(/^(.*) may attack to drain skills/);
-	b.push("그것은 may attack to drain skills");
+	a.push(/^(.+) may attack to drain skills/);
+	b.push("$1은(는) may attack to drain skills");
 
-	a.push(/^(.*) may attack to cause electrocution/);
-	b.push("그것의 공격은 감전을 유발한다");
+	a.push(/^(.+) may attack to cause electrocution/);
+	b.push("$1의 공격은 감전을 유발한다");
 
-	a.push(/^(.*) may attack to deal extra fire damage/);
-	b.push("그것은 화염 데미지를 추가로 준다");
+	a.push(/^(.+) may attack to deal extra fire damage/);
+	b.push("$1은(는) 화염 데미지를 추가로 준다");
 
-	a.push(/^(.*) may attack to cause hungering/);
-	b.push("그것의 공격은 배고픔을 유발한다");
+	a.push(/^(.+) may attack to cause hungering/);
+	b.push("$1의 공격은 배고픔을 유발한다");
 
-	a.push(/^(.*) may attack to cause mutations/);
-	b.push("그것의 공격은 돌연변이들을 유발한다");
+	a.push(/^(.+) may attack to cause mutations/);
+	b.push("$1의 공격은 돌연변이들을 유발한다");
 
-	a.push(/^(.*) may attack to cause paralysis/);
-	b.push("그것의 공격은 마비를 유발한다");
+	a.push(/^(.+) may attack to cause paralysis/);
+	b.push("$1의 공격은 마비를 유발한다");
 
-	a.push(/^(.*) may attack to cause poisoning/);
-	b.push("그것의 공격은 중독을 유발한다");
+	a.push(/^(.+) may attack to cause poisoning/);
+	b.push("$1의 공격은 중독을 유발한다");
 
-	a.push(/^(.*) may attack to cause strong poisoning through resistance/);
-	b.push("그것의 공격은 저항을 뚫고 강력한 중독을 유발한다");
+	a.push(/^(.+) may attack to cause strong poisoning through resistance/);
+	b.push("$1의 공격은 저항을 뚫고 강력한 중독을 유발한다");
 
-	a.push(/^(.*) may attack to cause rotting/);
-	b.push("그것의 공격은 부패(rotting)를 유발한다");
+	a.push(/^(.+) may attack to cause rotting/);
+	b.push("$1의 공격은 부패(rotting)를 유발한다");
 
-	a.push(/^(.*) may attack to drain health/);
-	b.push("그것의 공격은 체력을 흡수한다");
+	a.push(/^(.+) may attack to drain health/);
+	b.push("$1의 공격은 체력을 흡수한다");
 
-	a.push(/^(.*) may attack to cause random powerful effects/);
-	b.push("그것의 공격은 무작위적은 강력한 효과들을 유발한다");
+	a.push(/^(.+) may attack to cause random powerful effects/);
+	b.push("$1의 공격은 무작위적은 강력한 효과들을 유발한다");
 
-	a.push(/^(.*) may attack to cause wild translocation effects/);
-	b.push("그것의 공격은 사나운(wild) 전이 효과들을 유발한다");
+	a.push(/^(.+) may attack to cause wild translocation effects/);
+	b.push("$1의 공격은 사나운(wild) 전이 효과들을 유발한다");
 
-	a.push(/^(.*) may attack to cause berserking/);
-	b.push("그것의 공격은 광폭화를 유발한다");
+	a.push(/^(.+) may attack to cause berserking/);
+	b.push("$1의 공격은 광폭화를 유발한다");
 
-	a.push(/^(.*) may attack to apply sticky flame/);
-	b.push("그것의 공격은 may attack to apply sticky flame");
+	a.push(/^(.+) may attack to apply sticky flame/);
+	b.push("$1의 공격은 may attack to apply sticky flame");
 
-	a.push(/^(.*) may attack to cause unpredictable effects/);
-	b.push("그것의 공격은 예측 불가능한 효과를 유발한다");
+	a.push(/^(.+) may attack to cause unpredictable effects/);
+	b.push("$1의 공격은 예측 불가능한 효과를 유발한다");
 
-	a.push(/^(.*) may attack to steal items/);
-	b.push("그것의 공격은 물건들을 훔친다");
+	a.push(/^(.+) may attack to steal items/);
+	b.push("$1의 공격은 물건들을 훔친다");
 
-	a.push(/^(.*) may attack to constrict/);
-	b.push("그것은 조이기 공격을 한다");
+	a.push(/^(.+) may attack to constrict/);
+	b.push("$1은(는) 조이기 공격을 한다");
 
-	a.push(/^(.*) may attack to deal damage from a distance/);
-	b.push("그것의 공격은 may attack to deal damage from a distance");
+	a.push(/^(.+) may attack to deal damage from a distance/);
+	b.push("$1의 공격은 may attack to deal damage from a distance");
 
-	a.push(/^(.*) may attack to deal extra damage to undead and demons/);
-	b.push("그것은 언데드와 악마에게 추가적인 데미지를 입힌다");
+	a.push(/^(.+) may attack to deal extra damage to undead and demons/);
+	b.push("$1은(는) 언데드와 악마에게 추가적인 데미지를 입힌다");
 
-	a.push(/^(.*) may attack to drain magic/);
-	b.push("그것의 공격은 당신의 마법을 흡수한다");
+	a.push(/^(.+) may attack to drain magic/);
+	b.push("$1의 공격은 당신의 마법을 흡수한다");
 
-	a.push(/^(.*) may attack to cause pain to the living/);
-	b.push("그것의 공격은 살아있는 것에 고통(pain)을 유발한다");
+	a.push(/^(.+) may attack to cause pain to the living/);
+	b.push("$1의 공격은 살아있는 것에 고통(pain)을 유발한다");
 
-	a.push(/^(.*) may attack to ensnare with webbing/);
-	b.push("그것의 공격은 may attack to ensnare with webbing");
+	a.push(/^(.+) may attack to ensnare with webbing/);
+	b.push("$1의 공격은 may attack to ensnare with webbing");
 
-	a.push(/^(.*) may attack to engulf with water/);
-	b.push("그것의 공격은 물에 질식하게 만든다");
+	a.push(/^(.+) may attack to engulf with water/);
+	b.push("$1의 공격은 물에 질식하게 만든다");
 
-	a.push(/^(.*) may attack to deal pure fire damage/);
-	b.push("그것의 공격은 순수한 불 데미지를 준다");
+	a.push(/^(.+) may attack to deal pure fire damage/);
+	b.push("$1의 공격은 순수한 불 데미지를 준다");
 
-	a.push(/^(.*) may attack to drain speed/);
-	b.push("그것의 공격은 may attack to drain speed");
+	a.push(/^(.+) may attack to drain speed/);
+	b.push("$1의 공격은 may attack to drain speed");
 
-	a.push(/^(.*) may attack to reduce resistance to hostile enchantments/);
-	b.push("그것의 공격은 적대적인 마법에대한 저항력을 줄인다");
+	a.push(/^(.+) may attack to reduce resistance to hostile enchantments/);
+	b.push("$1의 공격은 적대적인 마법에대한 저항력을 줄인다");
 
-	a.push(/^(.*) may attack to cause poisoning and weakness/);
-	b.push("그것의 공격은 중독과 약화를 유발한다");
+	a.push(/^(.+) may attack to cause poisoning and weakness/);
+	b.push("$1의 공격은 중독과 약화를 유발한다");
 
-	a.push(/^(.*) may attack to deal extra damage from the shadows/);
-	b.push("그것의 공격은 may attack to deal extra damage from the shadows");
+	a.push(/^(.+) may attack to deal extra damage from the shadows/);
+	b.push("$1의 공격은 may attack to deal extra damage from the shadows");
 
-	a.push(/^(.*) may attack to deal drowning damage/);
-	b.push("그것의 공격은 may attack to deal drowning damage");
+	a.push(/^(.+) may attack to deal drowning damage/);
+	b.push("$1의 공격은 may attack to deal drowning damage");
 
-	a.push(/^(.*) may attack to deal extra fire damage and surround the defender with flames/);
-	b.push("그것의 공격은 추가적은 불 피해를 주고 주변을 불길로 감싼다");
+	a.push(/^(.+) may attack to deal extra fire damage and surround the defender with flames/);
+	b.push("$1의 공격은 추가적은 불 피해를 주고 주변을 불길로 감싼다");
 
-	a.push(/^(.*) may attack to cause corrosion/);
-	b.push("그것의 공격은 부식을 유발한다");
+	a.push(/^(.+) may attack to cause corrosion/);
+	b.push("$1의 공격은 부식을 유발한다");
 
-	a.push(/^(.*) may attack to drain speed and drain health/);
-	b.push("그것의 공격은 may attack to drain speed and drain health");
+	a.push(/^(.+) may attack to drain speed and drain health/);
+	b.push("$1의 공격은 may attack to drain speed and drain health");
 
-	a.push(/^(.*) may attack to knock back the defender/);
-	b.push("그것의 공격은 방어자를 물러서게 만든다");
+	a.push(/^(.+) may attack to knock back the defender/);
+	b.push("$1의 공격은 방어자를 물러서게 만든다");
 
-	a.push(/^(.*) is outlined in light/);
-	b.push('그것은 밝은 광채를 발하고 있다');
+	a.push(/^(.+) is outlined in light/);
+	b.push('$1은(는) 밝은 광채를 발하고 있다');
+
+	a.push(/It cannot move/);
+	b.push('그것은 움직일 수 없다');
+
+	a.push(/^(.+) is incapable of using stairs/);
+	b.push('$1은(는) 계단을 이용할 수 없다');
 }
 
 {
@@ -224,6 +232,16 @@ transDict_monsterDesc = { //몬스터 설명 reg
 	'corrosion' : '부식',
 	'missiles' : '투사체',//순서지키기
 	'missile' : '투사체',
+
+	//몬스터 설명 It, He, She
+	'He' : '그',
+	'She' : '그녀', 
+	'It' : '그것',
+	//몬스터 설명 한글 자연스럽게
+	'그은(는)' : '그는',
+	'그녀은(는)' : '그녀는',
+	'그것은(는)' : '그것은',
+
 	' and ' : ' , ' //이건 무조건 마지막
 	}
 }

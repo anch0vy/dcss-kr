@@ -90,6 +90,9 @@ function trans(dom, regs){
 function transShortWord(txt){
 	for(var key in transDict_word)
 		txt = txt.replace(key,transDict_word[key]);
+	//2번하는 이유는 문자열 교정때문에... 귀찮아서 걍 이렇게함
+	for(var key in transDict_word)
+		txt = txt.replace(key,transDict_word[key]);
 	return txt;
 }
 
@@ -102,7 +105,7 @@ function findMonsteResistant(dom){
 				txt = txt +' ' + desc2.innerText;
 				$(desc2).remove();
 			}
-			txt = txt.replace(/^(He|It) is/g,' ');
+			txt = txt.replace(/^(She|He|It) is/g,' ');
 			txt = txt.replace(/ (to|and) /g,' ');
 			txt = txt.replace(/,/g,' ');
 			txt = txt.replace(/\./g,' ');
@@ -149,7 +152,11 @@ function itemDesc(){
 	try{
 		if(dom[dom.length - 1].innerText.indexOf('You found') > -1
 		|| dom[dom.length - 1].innerText.indexOf('You took') > -1
-		|| dom[dom.length - 1].innerText.indexOf('...') > -1) //아이템이 어느정도 출력됬을떄
+		|| dom[dom.length - 1].innerText.indexOf('...') > -1
+		|| dom[dom.length - 1].innerText.indexOf('category') > -1
+		|| dom[dom.length - 1].innerText.indexOf('maximally') > -1
+		|| dom[dom.length - 1].innerText.indexOf('artefact') > -1
+		) //아이템이 어느정도 출력됬을떄
 			trans(dom, transDict_itemDesc_regex);
 	}
 	catch(err){
