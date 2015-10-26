@@ -2570,8 +2570,8 @@ transDict_monsterDesc = { //몬스터 설명 reg
 	a.push(/^(.+) regenerates quickly/);
 	b.push('$1은(는) 빠르게 재생한다');
 
-	a.push(/^It is susceptible to (.*)\./);
-	b.push('$1은(는) 몇몇 공격에 대해 민감하다. ($1)');
+	a.push(/^(.+) is susceptible to (.*)\./);
+	b.push('$1은(는) 몇몇 공격에 대해 민감하다. ($2)');
 
 	a.push(/^(.+) may attack to deal extra acid damage/);
 	b.push("$1은(는) 추가적인 산성 데미지를 입힌다");
